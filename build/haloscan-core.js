@@ -790,4 +790,244 @@ export function configureHaloscanServer(server) {
             };
         }
     });
+    /* -------------------- DOMAINS TOP PAGES -------------------- */
+    server.tool("get_domains_top_pages", "Obtenir les pages principales des domaines.", getDomainsTopPages.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/topPages", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS HISTORY POSITIONS -------------------- */
+    server.tool("get_domains_history_positions", "Obtenir l’historique des positions des domaines.", getDomainsHistoryPositions.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/history", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS HISTORY PAGES -------------------- */
+    server.tool("get_domains_history_pages", "Obtenir l’historique des positions des domaines.", getDomainsHistoryPages.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/pagesHistory", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- PAGE BEST KEYWORDS -------------------- */
+    server.tool("get_page_best_keywords", "Obtenir les meilleurs mots-clés de la page.", getPageBestKeywords.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/pageBestKeywords", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS KEYWORDS -------------------- */
+    server.tool("get_domains_keywords", "Obtenir les mots-clés des domaines.", getDomainsKeywords.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/keywords", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS BULK -------------------- */
+    server.tool("get_domains_bulk", "Obtenir des domaines en masse.", getDomainsBulk.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/bulk", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS COMPETITORS -------------------- */
+    server.tool("get_domains_competitors", "Obtenir les concurrents des domaines.", getDomainsCompetitors.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/siteCompetitors", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS COMPETITORS KEYWORDS DIFF -------------------- */
+    server.tool("get_domains_competitors_keywords_diff", "Obtenir la différence de mots-clés entre les domaines et leurs concurrents.", getDomainsCompetitorsKeywordsDiff.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/siteCompetitors/keywordsDiff", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS COMPETITORS BEST PAGES -------------------- */
+    server.tool("get_domains_competitors_best_pages", "Obtenir les meilleures pages des concurrents des domaines.", getDomainsCompetitorsBestPages.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/siteCompetitors/bestPages", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS COMPETITORS KEYWORDS BEST POS -------------------- */
+    server.tool("get_domains_competitors_keywords_best_pos", "Obtenir les meilleures positions des mots-clés des concurrents des domaines.", getDomainsCompetitorsKeywordsBestPos.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/siteCompetitors/keywordsBestPos", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS VISIBILITY TRENDS -------------------- */
+    server.tool("get_domains_visibility_trends", "Obtenir les tendances de visibilité des domaines.", getDomainsVisibilityTrends.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/history/visibilityTrends", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS EXPIRED -------------------- */
+    server.tool("get_domains_expired", "Obtenir les domaines expirés.", getDomainsExpired.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/expired", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS EXPIRED REVEAL -------------------- */
+    server.tool("get_domains_expired_reveal", "Révéler les domaines expirés.", getDomainsExpiredReveal.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/expired/reveal", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS GMB BACKLINKS -------------------- */
+    server.tool("get_domains_gmb_backlinks", "Obtenir les backlinks des domaines GMB.", getDomainsGMBBacklins.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/gmbBacklinks", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS GMB BACKLINKS MAP -------------------- */
+    server.tool("get_domains_gmb_backlinks_map", "Obtenir la carte des backlinks des domaines GMB.", getDomainsGmbBacklinksMap.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/gmbBacklinks/map", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
+    /* -------------------- DOMAINS GMB BACKLINKS CATEGORIES -------------------- */
+    server.tool("get_domains_gmb_backlinks_categories", "Obtenir les catégories des backlinks des domaines GMB.", getDomainsGmbBacklinksCategories.shape, async (params) => {
+        try {
+            const data = await makeHaloscanRequest("/domains/gmbBacklinks/categories", params, "POST");
+            return {
+                content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+            };
+        }
+        catch (error) {
+            return {
+                isError: true,
+                content: [{ type: "text", text: error.message }],
+            };
+        }
+    });
 }
