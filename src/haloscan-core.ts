@@ -708,5 +708,293 @@ export function configureHaloscanServer(server: McpServer) {
       }
     }
   );
-  
+
+  /* -------------------- KEYWORDS RELATED -------------------- */
+  server.tool(
+    "get_keywords_related",
+    "Obtenir les mots-clés associés.",
+    getKeywordsRelated.shape,
+    async (params: ToolsParamsType) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/keywords/related",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- KEYWORDS QUESTIONS -------------------- */
+  server.tool(
+    "get_keywords_questions",
+    "Obtenir les questions liées aux mots-clés.",
+    getKeywordsQuestions.shape,
+    async (params: ToolsParamsType) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/keywords/questions",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- KEYWORDS SYNONYMS -------------------- */
+  server.tool(
+    "get_keywords_synonyms",
+    "Obtenir les synonymes des mots-clés.",
+    getKeywordsSynonyms.shape,
+    async (params: ToolsParamsType) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/keywords/synonyms",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- KEYWORDS FIND -------------------- */
+  server.tool(
+    "get_keywords_find",
+    "Trouver des mots-clés.",
+    getKeywordsFind.shape,
+    async (params: ToolsParamsType) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/keywords/find",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- KEYWORDS SITE STRUCTURE -------------------- */
+  server.tool(
+    "get_keywords_site_structure",
+    "Obtenir la structure du site des mots-clés.",
+    getKeywordsSiteStructure.shape,
+    async (params: z.infer<typeof getKeywordsSiteStructure>) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/keywords/siteStructure",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- KEYWORDS SERP COMPARE -------------------- */
+  server.tool(
+    "get_keywords_serp_compare",
+    "Comparer les mots-clés dans les SERP.",
+    getKeywordsSerpCompare.shape,
+    async (params: z.infer<typeof getKeywordsSerpCompare>) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/keywords/serp/compare",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- KEYWORDS SERP AVAILABLE DATES -------------------- */
+  server.tool(
+    "get_keywords_serp_availableDates",
+    "Obtenir les dates disponibles des mots-clés dans les SERP.",
+    getKeywordsSerpAvailableDates.shape,
+    async (params: z.infer<typeof getKeywordsSerpAvailableDates>) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/keywords/serp/availableDates",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- KEYWORDS SERP PAGE EVOLUTION -------------------- */
+  server.tool(
+    "get_keywords_serp_pageEvolution",
+    "Obtenir l'évolution des pages SERP des mots-clés.",
+    getKeywordsSerpPageEvolution.shape,
+    async (params: z.infer<typeof getKeywordsSerpPageEvolution>) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/keywords/serp/pageEvolution",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- KEYWORDS BULK -------------------- */
+  server.tool(
+    "get_keywords_bulk",
+    "Obtenir des mots-clés en masse.",
+    getKeywordsBulk.shape,
+    async (params: ToolsParamsType) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/keywords/bulk",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- KEYWORDS SCRAP -------------------- */
+  server.tool(
+    "get_keywords_scrap",
+    "Extraire les mots-clés.",
+    getKeywordsScrap.shape,
+    async (params: z.infer<typeof getKeywordsScrap>) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/keywords/scrap",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- DOMAINS OVERVIEW -------------------- */
+  server.tool(
+    "get_domains_overview",
+    "Obtenir un aperçu des domaines.",
+    getDomainsOverview.shape,
+    async (params: z.infer<typeof getDomainsOverview>) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/domains/overview",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- DOMAINS POSITIONS -------------------- */
+  server.tool(
+    "get_domains_positions",
+    "Obtenir les positions des domaines.",
+    getDomainsPositions.shape,
+    async (params: DomainsToolsParamsList) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/domains/positions",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
 }
