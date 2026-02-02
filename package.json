@@ -1,6 +1,6 @@
 {
   "name": "@occirank/haloscan-mcp-claude-code",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "MCP stdio server for Haloscan SEO API (Claude Code compatible)",
   "type": "module",
   "license": "MIT",
