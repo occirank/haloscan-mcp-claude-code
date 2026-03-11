@@ -267,15 +267,15 @@ Add the Haloscan MCP to your Claude Code:
 
 - Restart Claude Code after making the changes.
 
-### Use Haloscan in Claude Code
+### 3. Use Haloscan in Claude Code
 Once connected, Claude will automatically use the Haloscan tools.
 
-- Example Requests
+#### Example Requests
 
-Haloscan Credits
+- Haloscan Credits:<br>
 Give me my Haloscan credits.
 
-Keyword Research
+- Keyword Research:<br>
 Find keywords related to "seo tools".
 
 
