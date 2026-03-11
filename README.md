@@ -262,7 +262,7 @@ Add the Haloscan MCP to your Claude Code:
 `claude mcp add haloscan npx @occirank/haloscan-mcp-claude-code`
 
 - Add the Haloscan API key<br>
-`claude mcp add haloscan \
+`claude mcp add haloscan \<br>
 -e HALOSCAN_API_KEY="VOTRE_CLE_API"`
 
 - Restart Claude Code after making the changes.
