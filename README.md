@@ -238,7 +238,7 @@ Add this server to your Claude Desktop configuration file `claude_desktop_config
     "Haloscan": {
       "command": "npx",
       "args": [
-        "@occirank/haloscan-mcp-claude-code",
+        "@occirank/haloscan-mcp-claude-code"
       ],
       "env": {
         "HALOSCAN_API_KEY": "your_haloscan_api_key"
@@ -277,6 +277,7 @@ Give me my Haloscan credits.
 
 - Keyword Research:<br>
 Find keywords related to "seo tools".
+
 
 
 ### License
