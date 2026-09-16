@@ -277,6 +277,94 @@ const getDomainsTopPages = z.object({
   total_top_100_max: z.number().optional().describe(""),
 });
 
+const getDomainsAioSources = z.object({
+  input: z.string().describe("Requested URL or domain"),
+  mode: z.enum(["auto", "root", "domain", "url"]).optional().default("auto").describe(""),
+  lineCount: z.number().optional().default(20).describe(""),
+  page: z.number().optional().default(1).describe(""),
+  order_by: z
+    .enum([
+      "default",
+      "keyword",
+      "volume",
+      "position",
+      "url",
+      "cpc",
+      "competition",
+      "kgr",
+      "allintitle",
+      "last_scrap",
+      "word_count",
+      "result_count",
+    ])
+    .optional()
+    .default("default")
+    .describe(""),
+  order: z.enum(["asc", "desc"]).optional().default("asc").describe(""),
+
+  volume_min: z.number().optional().describe(""),
+  volume_max: z.number().optional().describe(""),
+  cpc_min: z.number().optional().describe(""),
+  cpc_max: z.number().optional().describe(""),
+  competition_min: z.number().optional().describe(""),
+  competition_max: z.number().optional().describe(""),
+  kgr_min: z.number().optional().describe(""),
+  kgr_max: z.number().optional().describe(""),
+  kvi_min: z.number().optional().describe(""),
+  kvi_max: z.number().optional().describe(""),
+  kvi_keep_na: z.boolean().optional().describe(""),
+  allintitle_min: z.number().optional().describe(""),
+  allintitle_max: z.number().optional().describe(""),
+  traffic_min: z.number().optional().describe(""),
+  traffic_max: z.number().optional().describe(""),
+  position_min: z.number().optional().describe(""),
+  position_max: z.number().optional().describe(""),
+  keyword_word_count_min: z.number().optional().describe(""),
+  keyword_word_count_max: z.number().optional().describe(""),
+  serp_date_min: z.string().optional().describe(""),
+  serp_date_max: z.string().optional().describe(""),
+  keyword_include: z.string().optional().describe(""),
+  keyword_exclude: z.string().optional().describe(""),
+  title_include: z.string().optional().describe(""),
+  title_exclude: z.string().optional().describe(""),
+  url_include: z.string().optional().describe(""),
+  url_exclude: z.string().optional().describe(""),
+  redirects: z.boolean().optional().describe(""),
+  spell_suggests: z.boolean().optional().describe(""),
+  spell_both: z.boolean().optional().describe(""),
+
+  search_intent_includes: z
+    .array(
+      z.enum([
+        "informational",
+        "transactional",
+        "commercial",
+        "navigational",
+        "local",
+        "brand",
+      ])
+    )
+    .optional()
+    .describe(""),
+
+  search_intent_excludes: z
+    .array(
+      z.enum([
+        "informational",
+        "transactional",
+        "commercial",
+        "navigational",
+        "local",
+        "brand",
+      ])
+    )
+    .optional()
+    .describe(""),
+
+  serp_features_includes: z.array(z.string()).optional().describe(""),
+  serp_features_excludes: z.array(z.string()).optional().describe(""),
+});
+
 const getDomainsHistoryPositions = DomainsToolsParams.extend({
   input: z.string().describe(""),
   date_from: z.string().describe(""),
@@ -1150,6 +1238,30 @@ export function configureHaloscanServer(server: McpServer) {
       try {
         const data = await makeHaloscanRequest(
           "/domains/topPages",
+          params,
+          "POST"
+        );
+        return {
+          content: [{ type: "text", text: JSON.stringify(data, null, 2) }],
+        };
+      } catch (error: any) {
+        return {
+          isError: true,
+          content: [{ type: "text", text: error.message }],
+        };
+      }
+    }
+  );
+
+  /* -------------------- DOMAINS AI OVERVIEW SOURCES -------------------- */
+  server.tool(
+    "get_domains_aio_sources",
+    "Obtenir les sources AIO d'un domaine ou d'une URL",
+    getDomainsAioSources.shape,
+    async (params: z.infer<typeof getDomainsAioSources>) => {
+      try {
+        const data = await makeHaloscanRequest(
+          "/domains/aioSources",
           params,
           "POST"
         );
